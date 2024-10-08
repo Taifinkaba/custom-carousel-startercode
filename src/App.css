@@ -1,0 +1,17 @@
+body {
+  padding-top: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  margin-top: 5rem;
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
