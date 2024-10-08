@@ -1,4 +1,3 @@
-import { useState } from "react"
 import "./App.css";
 
 const carouselImages = [
@@ -8,11 +7,11 @@ const carouselImages = [
 ];
 
 export const App = () => {
-  const [carouselIdx, setCarouselIdx] = useState(0)
   
   return (
     <>
-      <img src={carouselImages[carouselIdx]}  />
+      <h1 style={{ textAlign: "center"}}>[YOUR NAME]'s Custom React Carousel 🦄</h1>
+      <img src={carouselImages[0]}  />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <button>{"<"} Prev</button>
         <button>Next {">"}</button>
