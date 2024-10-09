@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 const carouselImages = [
@@ -7,15 +8,64 @@ const carouselImages = [
 ];
 
 export const App = () => {
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleBoundry = (idx) => (idx+carouselImages.length)% carouselImages.length
+  const handleNext = () => setCurrentIndex(prevIdx => handleBoundry(prevIdx + 1));
+  const handlePrev = () => setCurrentIndex(prevIdx => handleBoundry(prevIdx + 1));
+
   return (
     <>
-      <h1 style={{ textAlign: "center"}}>[YOUR NAME]'s Custom React Carousel 🦄</h1>
-      <img src={carouselImages[0]}  />
+      <h1 style={{ textAlign: "center"}}>Tai's Custom React Carousel 🦄</h1>
+      <img src={carouselImages[currentIndex]}  />
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button>{"<"} Prev</button>
-        <button>Next {">"}</button>
+        <button onClick={handlePrev}>{"<"} Prev</button>
+        <button onClick={handleNext}>Next {">"}</button>
       </div>
     </>
   );
 };
+
+
+
+// failed 
+// export const work = () => {
+//   const[currentIndex, setCurrentIndex] = useState(0);
+//   const handleBoundry = (idx) => (idx+carouselImages.length)% carouselImages.length
+//   const handleNext = () => setCurrentIndex(prevIdx => handleBoundry(prevIdx + 1));
+//   const handlePrev = () => setCurrentIndex(prevIdx => handleBoundry(prevIdx + 1));
+
+// }
+
+// export const App = (handleNext, handlePrev) => {
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   // const handleNext = () => {
+//   //   // setCurrentIndex((setNext) => {
+//   //   //   setNext === carouselImages.length - 1 ? 0 : setNext + 1; 
+//   //   // });
+//   //   setCurrentIndex(prevIdx => (prevIdx + 1) % carouselImages.length);
+//   // }
+
+//   // const handlePrev = () => {
+//   //   // setCurrentIndex((setNext) => {
+//   //   //   setNext === carouselImages.length - 1 ? 0 : setNext - 1; 
+//   //   // });
+//   //   setCurrentIndex(prevIdx => (prevIdx - 1 + carouselImages.length) % carouselImages.length);
+//   // }
+
+//   // const handleBoundry = (idx) => (idx+carouselImages.length)% carouselImages.length
+//   // const handleNext = () => setCurrentIndex(prevIdx => handleBoundry(prevIdx + 1));
+//   // const handlePrev = () => setCurrentIndex(prevIdx => handleBoundry(prevIdx + 1));
+
+//   return (
+//     <>
+//       <h1 style={{ textAlign: "center"}}>Tai's Custom React Carousel 🦄</h1>
+//       <img src={carouselImages[currentIndex]}  />
+//       <div style={{ display: "flex", justifyContent: "space-between" }}>
+//         <button onClick={handlePrev}>{"<"} Prev</button>
+//         <button onClick={handleNext}>Next {">"}</button>
+//       </div>
+//     </>
+//   );
+// };
